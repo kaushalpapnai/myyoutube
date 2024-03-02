@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { closeMenu } from '../Utils/appSlice'
 import { useSearchParams } from 'react-router-dom'
+import CommmentSec from './CommmentSec'
 
 const WatchVideo = () => {
     const dispatch = useDispatch()
@@ -22,6 +23,7 @@ const WatchVideo = () => {
          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
          allowFullScreen>
          </iframe>
+         <CommmentSec videoId={searchParams.get("v")}/>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import YOUTUBE_API from '../Utils/config'
+import {YOUTUBE_API} from '../Utils/config'
 import VideoCard from './VideoCard'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
