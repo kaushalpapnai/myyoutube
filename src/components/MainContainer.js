@@ -10,7 +10,7 @@ const MainContainer = () => {
      dispatch(openMenu())
    })
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col mt-14 justify-center ml-44'>
        <ButtonList/>
        <VideoContainer/>   
     </div>

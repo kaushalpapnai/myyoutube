@@ -13,29 +13,29 @@ const Sidebar = () => {
 
 
   return (
-    <div className='p-5 shadow-lg w-44'>
+    <div className='p-5 shadow-lg w-44  mt-14 fixed h-full bg-white'>
       
       <ul className='py-5'>
         <Link to="/"><li>Home</li></Link>
-        <li>shorts</li>
-        <li>subcribtions</li>
-        <li>youtube Music</li>
+        <li className='my-2'>shorts</li>
+        <li className='my-2'>subcribtions</li>
+        <li className='my-2'>youtube Music</li>
       </ul>
 
       <h1 className='font-bold my-1'>subcribtions</h1>
       <ul className='py-1'>
-        <li>sample</li>
-        <li>sample</li>
-        <li>sample</li>
-        <li>sample</li>
+        <li className='my-2'>sample</li>
+        <li className='my-2'>sample</li>
+        <li className='my-2'>sample</li>
+        <li className='my-2'>sample</li>
       </ul>
 
       <h1 className='font-bold mt-4 my-2'>Explore</h1>
       <ul>
-         <li>Trending</li>
-         <li>Shopping</li>
-         <li>Music</li>
-         <li>Live</li>
+         <li className='my-2'>Trending</li>
+         <li className='my-2'>Shopping</li>
+         <li className='my-2'>Music</li>
+         <li className='my-2'>Live</li>
       </ul>
 
     </div>
