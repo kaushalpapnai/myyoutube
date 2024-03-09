@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { COMMENT_API } from '../Utils/config';
+import { api_key } from '../Utils/config';
 
 const CommmentSec = ({ videoId }) => {
   const [comments, setComments] = useState([]);
@@ -12,7 +12,7 @@ const CommmentSec = ({ videoId }) => {
   const getComments = async () => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=AIzaSyAyC3kMqci77hMdVmgK37ICH99p0jQqSKA`
+        `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${api_key}`
       );
       if (!response.ok) {
         throw new Error('Failed to fetch comments');

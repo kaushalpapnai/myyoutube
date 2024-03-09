@@ -3,6 +3,7 @@ import { toggleMenu } from '../Utils/appSlice';
 import { SEARCH_SUGGESION_API } from '../Utils/config';
 import { useDispatch, useSelector } from 'react-redux';
 import { cacheResults } from '../Utils/searchSlice';
+import { Link } from 'react-router-dom';
 
 const Head = () => {
    const [searchQuery,setSearchQuery] = useState("");
@@ -10,6 +11,10 @@ const Head = () => {
    const [showSuggestions,setShowSuggestions] = useState(false)
  
    const searchCache = useSelector(store => store.search) 
+
+   const searchButton=()=>{
+      window.location.href = `/results/${encodeURIComponent(searchQuery)}`;
+   }
 
     const dispatch = useDispatch();
     const handleClick=()=>{
@@ -66,15 +71,21 @@ const Head = () => {
              onFocus={()=>setShowSuggestions(true)}
              onBlur={()=>setShowSuggestions(false)}
           />
-          <button className='border border-gray-400 rounded-r-full p-2 hover:bg-gray-200 bg-gray-300'>search</button>
+          <button className='border border-gray-400 rounded-r-full p-2 hover:bg-gray-200 bg-gray-300' onClick={()=>searchButton()}>search</button>
         </div>
-     {suggestions != 0 && showSuggestions?<div className='z-50 bg-white rounded-lg border p-3 w-[30rem] ml-2 border-gray-300'>
-        <ul>
-         {
-          showSuggestions ? suggestions.map((s)=><li key={s} className='py-2 shadow-sm hover:bg-gray-100 pl-3'>{s}</li>) : null
-         }
-        </ul>
-     </div> : null}
+        {suggestions.length > 0 && showSuggestions ?
+  <div className='z-50 bg-white rounded-lg border p-3 w-[30rem] ml-2 border-gray-300'>
+      {suggestions.map((s, index) => (
+        <div className='py-2 shadow-sm hover:bg-gray-100 pl-3' key={index}>
+          <Link to={`/results/${s}`}>
+            {s}
+          </Link>
+        </div>
+      ))}
+  </div> 
+  : null
+}
+
      </div>
      <div className='flex justify-center'>
         <img  className='h-8' alt='profile' src='https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png'/>
