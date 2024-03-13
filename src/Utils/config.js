@@ -8,4 +8,4 @@ export const SEARCH_SUGGESION_API = `http://suggestqueries.google.com/complete/s
 
 export const SEARCH_RESULTS = `https://www.googleapis.com/youtube/v3/search?key=${api_key}&maxResults=50&type=video&part=snippet&q=`
 
-
+export const CHAT_COUNT = "25"

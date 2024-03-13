@@ -2,7 +2,8 @@ import React from 'react'
 
 const ChatMassege = ({name,message}) => {
   return (
-    <div className='flex items-center m-2' >
+    <>
+      <div className='flex items-center m-2' >
         <img  
         className='h-7 border rounded-full' 
         alt='profile' 
@@ -10,7 +11,9 @@ const ChatMassege = ({name,message}) => {
         />
         <span className='font-bold px-2'>{name}</span>
         <span>{message}</span>
-    </div>
+      </div>
+    
+    </>
   )
 }
 
