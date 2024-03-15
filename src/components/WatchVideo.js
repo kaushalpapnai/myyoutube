@@ -14,12 +14,12 @@ const WatchVideo = () => {
     console.log(searchParams.get("v"))
  
   return (
-    <div className='px-5 mt-2 ml-2 w-full'>
-        <div className='flex w-full'>
-          <div>
+    <div className='px-5 mt-20 ml-2 w-full '>
+        <div className='flex  justify-center '>
+          <div> 
               <iframe 
-              className='mt-14'
-              width="850" 
+              className=' rounded-xl'
+              width="800" 
               height="550" 
               src={"https://www.youtube.com/embed/" + searchParams.get("v") }
               title="YouTube video player" 
@@ -28,7 +28,7 @@ const WatchVideo = () => {
               allowFullScreen>
               </iframe>     
           </div>
-          <div className='mt-14 w-full'>
+          <div className='w-fit ml-3 '>
              <LiveChat />
           </div>
         </div>
