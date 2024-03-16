@@ -50,7 +50,7 @@ const Head = () => {
 
   return (
     <>  
-    <div className='flex justify-between fixed w-full h-16 align-middle p-3 bg-white' >
+    <div className='flex justify-between fixed w-full h-16 align-middle p-3 bg-white z-50' >
      <div className='flex  '>
          <img 
          onClick={()=>{handleClick()}}
@@ -71,7 +71,7 @@ const Head = () => {
              onFocus={()=>setShowSuggestions(true)}
              onBlur={()=>setShowSuggestions(false)}
           />
-          <button className='border border-gray-400 rounded-r-full p-2 hover:bg-gray-200 bg-gray-300'>search</button>
+           <button className='border border-gray-400 rounded-r-full p-2 hover:bg-gray-200 bg-gray-300' onClick={()=>searchButton()}>search</button>
         </div>
         {suggestions.length > 0 && showSuggestions ?
            <div className='z-50 bg-white rounded-lg border p-3 w-[30rem] ml-2 border-grey-300 ' onClick={()=>console.log("hello")}>
@@ -86,7 +86,7 @@ const Head = () => {
         }
      </div>
      <div className='flex justify-center'>
-        <img  className='h-8' alt='profile' src='https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png'/>
+        <img  className='h-8' onClick={()=>console.log("hello")} alt='profile' src='https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png'/>
      </div>
 
     </div>

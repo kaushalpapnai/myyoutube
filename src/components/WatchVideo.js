@@ -19,7 +19,7 @@ const WatchVideo = () => {
           <div> 
               <iframe 
               className=' rounded-xl'
-              width="800" 
+              width="850" 
               height="550" 
               src={"https://www.youtube.com/embed/" + searchParams.get("v") }
               title="YouTube video player" 
