@@ -7,10 +7,20 @@ import { generate, makeString } from '../Utils/helper'
 const LiveChat = () => {
    const dispatch = useDispatch()
    const chatMessages = useSelector((store)=>store.chat.messages)
-   const [myMessage,setMyMessage] = useState("Chat...")
+   const [myMessage,setMyMessage] = useState("")
+   const [liveChatToggle,setLiveChatToggle] = useState(false)
 
    const handleChange=(e)=>{
      setMyMessage(e.target.value)
+   }
+
+   const handleChatToggle=()=>{
+      if(liveChatToggle == false){
+        setLiveChatToggle(true)
+      }
+      else if(liveChatToggle == true){
+        setLiveChatToggle(false)
+      }
    }
 
    const handleClick=()=>{
@@ -37,10 +47,19 @@ const LiveChat = () => {
 
   return (
     <>
-    <div className='w-[26rem] border  relative rounded-2xl rounded-tr-2xl shadow-sm  ml-3'>
-       <div className='left-0 right-0 absolute h-14  bg-white border border-b-gray-300  rounded-tl-2xl rounded-tr-2xl p-4 pl-6 text-lg'>Chat</div>
+   { liveChatToggle ? <div className='w-[26rem] border  relative rounded-2xl rounded-tr-2xl shadow-sm  ml-3'>
+       <div className='left-0 right-0 absolute flex justify-between h-13  bg-white border border-b-gray-300  rounded-tl-2xl rounded-tr-2xl text-lg'>
+          <span className='ml-6 mt-3'>Chat</span>
+          <button onClick={()=>handleChatToggle()}>
+            <img 
+             className='h-10 w-10 m-2'
+             src='https://static.thenounproject.com/png/3015892-200.png'
+             >
+             </img>
+          </button>
+       </div>
        <div 
-        className=' p-2 h-[550px] overflow-y-scroll flex flex-col-reverse'
+        className=' p-2 h-[32rem] overflow-y-scroll flex flex-col-reverse'
        >
        
            {
@@ -63,8 +82,13 @@ const LiveChat = () => {
             >
             </img>
         </button>
-      </div>
-    </div>
+      </div> 
+
+    </div> : <button className='w-[26rem] border border-gray-300 h-9 hover:bg-red-50 rounded-2xl rounded-tr-2xl shadow-sm  ml-3'
+      onClick={()=>handleChatToggle()}
+      >show chat
+    </button>
+    }
     
     </>
   )
