@@ -46,7 +46,7 @@ const CommmentSec = ({ videoId }) => {
       ) : (
         comments.length > 0 ? (
           comments.map((comment, index) => (
-            <div key={index} className="flex m-5">
+            <div key={index} className="flex m-5 ">
               <img
                 src={comment.authorProfileImageUrl}
                 className="border rounded-full w-10 h-10"

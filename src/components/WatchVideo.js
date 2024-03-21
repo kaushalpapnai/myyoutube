@@ -4,6 +4,7 @@ import { closeMenu } from '../Utils/appSlice'
 import { useSearchParams } from 'react-router-dom'
 import CommmentSec from './CommmentSec'
 import LiveChat from './LiveChat'
+import RelatedVideo from './RelatedVideoContainer'
 
 const WatchVideo = () => {
     const dispatch = useDispatch()
@@ -14,8 +15,8 @@ const WatchVideo = () => {
     console.log(searchParams.get("v"))
  
   return (
-    <div className='px-5 mt-20 ml-2 w-full '>
-        <div className='flex  justify-center '>
+    <div className='px-5 mt-20 ml-2 w-full flex'>
+        <div className='flex  justify-center flex-col w-fit h-fit'>
           <div> 
               <iframe 
               className=' rounded-xl'
@@ -28,11 +29,14 @@ const WatchVideo = () => {
               allowFullScreen>
               </iframe>     
           </div>
+        <div className=' w-1/2'>
+         <CommmentSec videoId={searchParams.get("v")}/>
+        </div>
+        </div>
           <div className='w-fit ml-3 '>
              <LiveChat />
+             <RelatedVideo/>
           </div>
-        </div>
-         <CommmentSec videoId={searchParams.get("v")}/>
     </div>
   )
 }

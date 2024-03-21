@@ -47,7 +47,7 @@ const LiveChat = () => {
 
   return (
     <>
-   { liveChatToggle ? <div className='w-[26rem] border  relative rounded-2xl rounded-tr-2xl shadow-sm  ml-3'>
+   { liveChatToggle ? <div className='w-[26rem] relative rounded-2xl rounded-tr-2xl shadow-sm  ml-3'>
        <div className='left-0 right-0 absolute flex justify-between h-13  bg-white border border-b-gray-300  rounded-tl-2xl rounded-tr-2xl text-lg'>
           <span className='ml-6 mt-3'>Chat</span>
           <button onClick={()=>handleChatToggle()}>
@@ -59,7 +59,7 @@ const LiveChat = () => {
           </button>
        </div>
        <div 
-        className=' p-2 h-[32rem] overflow-y-scroll flex flex-col-reverse'
+        className=' p-2 h-[32rem] overflow-y-scroll flex flex-col-reverse border rounded-t-2xl'
        >
        
            {
@@ -72,7 +72,7 @@ const LiveChat = () => {
                ))
            }
        </div>
-      <div className=' p-2  borde flex items-cente border-t-gray-300 border justify-center items-center'>
+      <div className=' p-2 flex items-cente border-t-gray-300 border justify-center items-center'>
         <input className='w-[20rem] m-2 border bg-red-50  rounded-full focus:outline-none h-[2.3rem] p-3' type='text' value={myMessage} placeholder='Chat...' onChange={(e)=>handleChange(e)}></input>
         <button className='px-2 mx-2 hover:bg-red-50 rounded-full h-10 w-10 flex justify-center items-center' onClick={()=>handleClick()}>
             <img  
@@ -84,7 +84,7 @@ const LiveChat = () => {
         </button>
       </div> 
 
-    </div> : <button className='w-[26rem] border border-gray-300 h-9 hover:bg-red-50 rounded-2xl rounded-tr-2xl shadow-sm  ml-3'
+    </div> : <button className='w-[26rem] border border-gray-300   h-9 hover:bg-red-50 rounded-2xl rounded-tr-2xl shadow-sm  ml-3'
       onClick={()=>handleChatToggle()}
       >show chat
     </button>

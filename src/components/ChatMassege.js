@@ -3,7 +3,7 @@ import React from 'react'
 const ChatMassege = ({name,message}) => {
   return (
     <>
-      <div className='flex  m-2' >
+      <div className='flex  m-2 ' >
         <img  
         className='h-6 border rounded-full' 
         alt='profile' 
