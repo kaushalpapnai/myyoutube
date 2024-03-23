@@ -54,7 +54,7 @@ const CommmentSec = ({ videoId }) => {
               />
               <div className="flex flex-col list-none ml-2">
                 <ul className="flex items-center">
-                  <li className="text-gray-700 text-sm">{comment.authorDisplayName}</li>
+                  <li className="text-gray-700 text-sm font-carlito">{comment.authorDisplayName}</li>
                   <li className="text-gray-500 text-xs ml-1 mt-1">
                     {new Date(comment.publishedAt).toLocaleString()}
                   </li>

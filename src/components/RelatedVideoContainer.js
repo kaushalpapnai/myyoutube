@@ -12,7 +12,7 @@ const RelatedVideo = () => {
     const Video = async()=>{
         const data = await fetch(YOUTUBE_API);
        const json = await data.json();
-       console.log(json)
+      //  console.log(json)
        setRelatedVideo(json?.items);
     }
 
@@ -40,13 +40,12 @@ const RelatedVideo = () => {
 
   return (
     <>
-      {console.log(relatedVideo)}
       {  
         relatedVideo ? relatedVideo?.map((items)=>(
-          <div className='flex m-5 box-border'>
-              <img
-              className='mr-3 rounded-lg w-44 h-[7rem]' 
-              src={items?.snippet?.thumbnails?.default?.url}></img>
+          <div className='flex m-5 box-border' key={items.id}>
+              <img 
+              className='mr-3 rounded-lg w-44 h-[7rem]'
+              src={items?.snippet?.thumbnails?.medium?.url}></img>
           <div className='box-border w-2/3'>
              <h1>{sliceCharTitle(items?.snippet?.title)}</h1>
              <p className='mt-1 mb-1 text-sm text-gray-600'>{items?.snippet?.channelTitle}</p>

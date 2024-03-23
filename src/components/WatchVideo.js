@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom'
 import CommmentSec from './CommmentSec'
 import LiveChat from './LiveChat'
 import RelatedVideo from './RelatedVideoContainer'
+import VideoDetails from './VideoDetails'
 
 const WatchVideo = () => {
     const dispatch = useDispatch()
@@ -12,7 +13,7 @@ const WatchVideo = () => {
         dispatch(closeMenu())
     },[])
     const [searchParams] = useSearchParams()
-    console.log(searchParams.get("v"))
+    // console.log(searchParams.get("v"))
  
   return (
     <div className='px-5 mt-20 ml-2 w-full flex'>
@@ -30,6 +31,7 @@ const WatchVideo = () => {
               </iframe>     
           </div>
         <div className=' w-1/2'>
+          <VideoDetails VideoId={searchParams.get("v")}/>
          <CommmentSec videoId={searchParams.get("v")}/>
         </div>
         </div>
