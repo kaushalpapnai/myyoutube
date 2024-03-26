@@ -30,7 +30,7 @@ const WatchVideo = () => {
               allowFullScreen>
               </iframe>     
           </div>
-        <div className=' w-1/2'>
+        <div className=' w-full'>
           <VideoDetails VideoId={searchParams.get("v")}/>
          <CommmentSec videoId={searchParams.get("v")}/>
         </div>

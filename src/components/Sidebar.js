@@ -13,13 +13,13 @@ const Sidebar = () => {
 
 
   return (
-    <div className='p-5 shadow-lg w-44  mt-14 fixed h-full bg-white'>
+    <div className='p-5 w-44  mt-14 fixed h-full bg-white'>
       
       <ul className='py-5'>
-        <Link to="/"><li>Home</li></Link>
-        <li className='my-2'>shorts</li>
-        <li className='my-2'>subcribtions</li>
-        <li className='my-2'>youtube Music</li>
+        <Link to="/" ><li className='ml-2'>Home</li></Link>
+        <li className='my-3 ml-2'>shorts</li>
+        <li className='my-3 ml-2'>subcribtions</li>
+        <li className='my-3 ml-2'>youtube Music</li>
       </ul>
 
       <h1 className='font-bold my-1'>subcribtions</h1>

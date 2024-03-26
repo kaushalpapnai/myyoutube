@@ -26,6 +26,41 @@ const RelatedVideo = () => {
       }
   }
 
+  function formatRelativeTime(timeString) {
+    const currentTime = new Date();
+    const givenTime = new Date(timeString);
+    const timeDifference = currentTime - givenTime;
+
+    const minute = 60 * 1000;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const week = day * 7;
+    const month = day * 30;
+    const year = day * 365;
+
+    if (timeDifference < minute) {
+        return 'Just now';
+    } else if (timeDifference < hour) {
+        const minutes = Math.floor(timeDifference / minute);
+        return minutes + (minutes === 1 ? ' minute ago' : ' minutes ago');
+    } else if (timeDifference < day) {
+        const hours = Math.floor(timeDifference / hour);
+        return hours + (hours === 1 ? ' hour ago' : ' hours ago');
+    } else if (timeDifference < week) {
+        const days = Math.floor(timeDifference / day);
+        return days + (days === 1 ? ' day ago' : ' days ago');
+    } else if (timeDifference < month) {
+        const weeks = Math.floor(timeDifference / week);
+        return weeks + (weeks === 1 ? ' week ago' : ' weeks ago');
+    } else if (timeDifference < year) {
+        const months = Math.floor(timeDifference / month);
+        return months + (months === 1 ? ' month ago' : ' months ago');
+    } else {
+        const years = Math.floor(timeDifference / year);
+        return years + (years === 1 ? ' year ago' : ' years ago');
+    }
+}
+
      const sliceCharTitle=(char)=>{
           let slicedChar;
            if(char.length > 60){
@@ -41,6 +76,7 @@ const RelatedVideo = () => {
   return (
     <>
       {  
+        
         relatedVideo ? relatedVideo?.map((items)=>(
           <div className='flex m-5 box-border' key={items.id}>
               <img 
@@ -50,7 +86,7 @@ const RelatedVideo = () => {
              <h1>{sliceCharTitle(items?.snippet?.title)}</h1>
              <p className='mt-1 mb-1 text-sm text-gray-600'>{items?.snippet?.channelTitle}</p>
              <div className='flex'>
-               <p className='text-sm text-gray-600 mr-3'>{views(items?.statistics?.viewCount) + " Views"}</p>
+               <p className='text-sm text-gray-600 mr-3'>{formatRelativeTime(items?.statistics?.viewCount)}</p>
                <p className='text-sm text-gray-600'>{new Date(items?.snippet?.publishedAt).toLocaleString()}</p>
              </div>
           </div>
@@ -62,3 +98,4 @@ const RelatedVideo = () => {
 }
 
 export default RelatedVideo
+// {views(items?.statistics?.viewCount) + " Views"}

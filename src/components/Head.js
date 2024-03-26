@@ -4,6 +4,7 @@ import { SEARCH_SUGGESION_API } from '../Utils/config';
 import { useDispatch, useSelector } from 'react-redux';
 import { cacheResults } from '../Utils/searchSlice';
 import { Link } from 'react-router-dom';
+import { BiSearch } from 'react-icons/bi';
 
 const Head = () => {
    const [searchQuery,setSearchQuery] = useState("");
@@ -62,16 +63,16 @@ const Head = () => {
 
      </div>
      <div className='relative' >
-        <div className='mr-20'>
+        <div className='mr-20 flex items-center'>
           <input
              onChange={(e)=> setSearchQuery(e.target.value)}
-             className='w-[30rem] border border-gray-400 p-2 rounded-l-full'
+             className='w-[30rem] border border-gray-300 p-2 rounded-l-full'
              type='text'
              placeholder='search'
              onFocus={()=>setShowSuggestions(true)}
              onBlur={()=>setShowSuggestions(false)}
           />
-           <button className='border border-gray-400 rounded-r-full p-2 hover:bg-gray-200 bg-gray-300' onClick={()=>searchButton()}>search</button>
+           <button className='border border-gray-300 h-[42px] w-16 flex items-center justify-center rounded-r-full hover:bg-red-50' onClick={()=>searchButton()}><BiSearch/></button>
         </div>
         {suggestions.length > 0 && showSuggestions ?
            <div className='z-50 bg-white rounded-lg border p-3 w-[30rem] ml-2 border-grey-300 ' onClick={()=>console.log("hello")}>

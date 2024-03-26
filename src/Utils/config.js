@@ -2,7 +2,7 @@ export const api_key = "AIzaSyDCpnht6MargcVvX_DC6IVtisNtpsTzJp4"
 
 export const YOUTUBE_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${api_key}`;
 
-export const VIDEO_INFO = `https://www.googleapis.com/youtube/v3/videos?id=VIDEO_ID&key=${api_key}&part=snippet`
+export const VIDEO_INFO = `https://www.googleapis.com/youtube/v3/videos?id=VIDEO_ID&key=${api_key}&part=snippet,statistics`
 
 export const COMMENT_API = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=VIDEO_ID&key=${api_key}`
 
