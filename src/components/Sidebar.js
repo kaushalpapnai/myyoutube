@@ -19,23 +19,23 @@ const Sidebar = () => {
         <Link to="/" ><li className='ml-2'>Home</li></Link>
         <li className='my-3 ml-2'>shorts</li>
         <li className='my-3 ml-2'>subcribtions</li>
-        <li className='my-3 ml-2'>youtube Music</li>
+        <li className='ml-2'>youtube Music</li>
       </ul>
 
       <h1 className='font-bold my-1'>subcribtions</h1>
       <ul className='py-1'>
-        <li className='my-2'>sample</li>
-        <li className='my-2'>sample</li>
-        <li className='my-2'>sample</li>
-        <li className='my-2'>sample</li>
+        <li  className='my-1 ml-2'>sample</li>
+        <li  className='my-3 ml-2'>sample</li>
+        <li  className='my-3 ml-2'>sample</li>
+        <li  className='ml-2'>sample</li>
       </ul>
 
       <h1 className='font-bold mt-4 my-2'>Explore</h1>
       <ul>
-         <li className='my-2'>Trending</li>
-         <li className='my-2'>Shopping</li>
-         <li className='my-2'>Music</li>
-         <li className='my-2'>Live</li>
+         <li  className='my-3 ml-2'>Trending</li>
+         <li  className='my-3 ml-2'>Shopping</li>
+         <li  className='my-3 ml-2'>Music</li>
+         <li  className='my-3 ml-2'>Live</li>
       </ul>
 
     </div>

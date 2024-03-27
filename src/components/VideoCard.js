@@ -25,10 +25,10 @@ const slicedTitle=()=>{
 }
 
   return (
-    <div className='p-2 m-2 w-72 shadow-sm'>
-        <img className='rounded-lg' alt="image" src={thumbnails.medium.url}></img>
+    <div className='p-2 m-3  shadow-sm'>
+        <img className='rounded-lg w-full' alt="image" src={thumbnails.medium.url}></img>
         <ul>
-            <li className='font-bold py-1 min-h-14'>{slicedTitle() + "..."}</li>
+            <li className='font-bold py-1'>{slicedTitle() + "..."}</li>
             <li className='text-sm text-gray-600'>{channelTitle}</li>
             <li className='text-sm text-gray-600'>{views(statistics.viewCount)} views</li>
         </ul>

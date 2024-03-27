@@ -63,10 +63,10 @@ const Head = () => {
 
      </div>
      <div className='relative' >
-        <div className='mr-20 flex items-center'>
+        <div className='mr-20 border border-red-300 flex items-center w-full'>
           <input
              onChange={(e)=> setSearchQuery(e.target.value)}
-             className='w-[30rem] border border-gray-300 p-2 rounded-l-full'
+             className=' border border-gray-300 p-2 rounded-l-full w-full'
              type='text'
              placeholder='search'
              onFocus={()=>setShowSuggestions(true)}
