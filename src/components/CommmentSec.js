@@ -7,7 +7,7 @@ const CommmentSec = ({ videoId }) => {
 
   useEffect(() => {
     getComments();
-  }, []); // Empty dependency array ensures the effect runs only once on component mount
+  }, [videoId]); // Empty dependency array ensures the effect runs only once on component mount
 
   const getComments = async () => {
     try {

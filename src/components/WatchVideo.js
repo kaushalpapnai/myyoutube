@@ -13,7 +13,12 @@ const WatchVideo = () => {
         dispatch(closeMenu())
     },[])
     const [searchParams] = useSearchParams()
-    // console.log(searchParams.get("v"))
+
+    useEffect(()=>{
+          window.scrollTo({
+            top:0,
+          })
+    },[searchParams.get("v")])
  
   return (
     <div className='px-5 mt-20 ml-2 w-full flex'>
@@ -37,7 +42,7 @@ const WatchVideo = () => {
         </div>
           <div className='w-fit ml-3 '>
              <LiveChat />
-             <RelatedVideo/>
+             <RelatedVideo videoId={searchParams.get("v")}/>
           </div>
     </div>
   )

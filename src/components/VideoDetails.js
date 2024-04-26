@@ -17,7 +17,7 @@ const VideoDetails = ({VideoId}) => {
 
      useEffect(()=>{
         VideoApi()
-     },[])
+     },[VideoId])
 
     useEffect(()=>{
         channelApi()
