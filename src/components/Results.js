@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { SEARCH_RESULTS } from '../Utils/config';
 import { Link, useParams } from 'react-router-dom';
 import ResultsCard from './ResultsCard';
+import { useSelector } from 'react-redux'
 
 const Results = () => {
     let { id } = useParams();
     // console.log(id);
     const [searchData, setSearchData] = useState([]);
+    const appSlice = useSelector((store)=>store.app.isMenuOpen) 
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,7 +25,7 @@ const Results = () => {
 
     return (
         <>
-        <div className=' ml-52 mt-28 '>
+        <div className={`mt-28 ml-${appSlice? "44" : "40"}`}>
          {searchData && searchData?.map((item)=>
            (
             <Link to={"/watch?v="+item.id.videoId} key={item.id.videoId}>

@@ -78,7 +78,7 @@ const RelatedVideo = ({videoId}) => {
             <Link to={`/watch?v=${items.id}`}>
               <div className="flex m-5 box-border" key={items.id}>
                 <img
-                  className="mr-3 rounded-lg w-44 h-[7rem]"
+                  className="mr-3 rounded-lg w-48 h-[7rem]"
                   src={items?.snippet?.thumbnails?.medium?.url}
                 ></img>
                 <div className="box-border w-2/3">
