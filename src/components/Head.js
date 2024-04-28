@@ -3,11 +3,12 @@ import { toggleMenu } from "../Utils/appSlice";
 import { SEARCH_SUGGESION_API } from "../Utils/config";
 import { useDispatch, useSelector } from "react-redux";
 import { cacheResults } from "../Utils/searchSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 
 const Head = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const history = useNavigate(); // Get history from React Router
+  const [searchQuery, setSearchQuery] = useState(""); // Initial empty state
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const suggestionRef = useRef(null);
@@ -22,7 +23,7 @@ const Head = () => {
 
   const searchButton = () => {
     if (searchQuery) {
-      window.location.href = `/results/${encodeURIComponent(searchQuery)}`;
+      history(`/results/${encodeURIComponent(searchQuery)}`); // Update history
     }
   };
 
@@ -38,7 +39,7 @@ const Head = () => {
 
   const handleSuggestionClick = (suggestion) => {
     setSearchQuery(suggestion);
-    setShowSuggestions(false);
+    history(`/results/${suggestion}`); // Update history
   };
 
   const handleOutsideClick = (e) => {
@@ -85,7 +86,7 @@ const Head = () => {
   return (
     <>
       <div className="flex justify-between fixed w-full h-16 align-middle p-3 bg-white z-50">
-        <div className="flex">
+      <div className="flex">
           <img
             onClick={handleClick}
             className="h-8 mx-4 cursor-pointer"
@@ -101,7 +102,7 @@ const Head = () => {
         <div className="relative w-[48%] border border-red-300">
           <div className="mr-20 flex items-center w-full">
             <input
-              value={searchQuery && `${encodeURIComponent(searchQuery)}`}
+              value={searchQuery}
               onChange={handleSearchChange}
               className="border border-gray-300 p-2 rounded-l-full w-full"
               type="text"
