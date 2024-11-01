@@ -1,25 +1,25 @@
-import React, { useEffect } from 'react'
-import VideoContainer from './VideoContainer'
-import { useDispatch } from 'react-redux'
-import {openMenu}  from '../Utils/appSlice'
-import { useSelector } from 'react-redux'
- 
-const MainContainer = () => {
-  
-  const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(openMenu())
-  },[])
-  const appSlice = useSelector((store)=>store.app.isMenuOpen) 
-  return (
-    <>
-    <div className={` pl-9 mt-20 w-screen ml-${appSlice? "44" : "none"}`}>
-       {/* <ButtonCarousel /> */}
-       <VideoContainer/>   
-    </div>
-    
-    </>
-  )
-}
+import React, { useEffect } from 'react';
+import VideoContainer from './VideoContainer';
+import { useDispatch, useSelector } from 'react-redux';
+import { openMenu } from '../Utils/appSlice';
 
-export default MainContainer
+const MainContainer = () => {
+  const dispatch = useDispatch();
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+
+  useEffect(() => {
+    dispatch(openMenu());
+  }, [dispatch]);
+
+  return (
+    <div
+      className={`mt-[3rem] w-screen 
+      ${isMenuOpen ? 'ml-[3.7rem] md:ml-44' : ''}`}
+    >
+      {/* <ButtonCarousel /> */}
+      <VideoContainer />
+    </div>
+  );
+};
+
+export default MainContainer;

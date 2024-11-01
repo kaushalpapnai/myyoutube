@@ -25,7 +25,7 @@ const slicedTitle=()=>{
 }
 
   return (
-    <div className='p-2 m-3'>
+    <div className='p-2 md:m-3 lg:m-3'>
         <img className='rounded-lg w-full' alt="image" src={thumbnails.medium.url}></img>
         <ul>
             <li className='font-bold py-1'>{slicedTitle() + "..."}</li>
