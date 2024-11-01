@@ -13,7 +13,7 @@ const Head = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const suggestionRef = useRef(null);
 
-  console.log(suggestions)
+
   const searchCache = useSelector((store) => store.search);
 
   const dispatch = useDispatch();
@@ -36,8 +36,10 @@ const Head = () => {
 
   const handleSuggestionClick = (suggestion) => {
     setSearchQuery(suggestion);
+    setShowSuggestions(false); 
     history(`/results/${suggestion}`);
   };
+  
 
   const handleOutsideClick = (e) => {
     if (suggestionRef.current && !suggestionRef.current.contains(e.target)) {
@@ -56,6 +58,7 @@ const Head = () => {
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
+        
       } else {
         searchSuggestion();
       }
@@ -67,9 +70,10 @@ const Head = () => {
 
   const searchSuggestion = async () => {
     try {
-      const response = await fetch(SEARCH_SUGGESION_API + searchQuery);
+      const response = await fetch(`http://localhost:5001/api/suggestions?q=${searchQuery}`);
       const json = await response.json();
-      setSuggestions(json[1]);
+      console.log(json);
+      setSuggestions(json[1]); // Assuming the format remains the same
       dispatch(
         cacheResults({
           [searchQuery]: json[1],
@@ -79,6 +83,8 @@ const Head = () => {
       console.error("Error fetching suggestions:", error);
     }
   };
+  
+  
 
   return (
     <>
