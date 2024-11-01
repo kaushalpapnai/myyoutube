@@ -13,7 +13,7 @@ const MainContainer = () => {
   const appSlice = useSelector((store)=>store.app.isMenuOpen) 
   return (
     <>
-    <div className={` border border-green-400 mt-20 w-screen ml-${appSlice? "44" : "none"}`}>
+    <div className={` pl-9 mt-20 w-screen ml-${appSlice? "44" : "none"}`}>
        {/* <ButtonCarousel /> */}
        <VideoContainer/>   
     </div>

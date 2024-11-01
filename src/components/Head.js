@@ -7,12 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 
 const Head = () => {
-  const history = useNavigate(); // Get history from React Router
-  const [searchQuery, setSearchQuery] = useState(""); // Initial empty state
+  const history = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const suggestionRef = useRef(null);
 
+  console.log(suggestions)
   const searchCache = useSelector((store) => store.search);
 
   const dispatch = useDispatch();
@@ -23,23 +24,19 @@ const Head = () => {
 
   const searchButton = () => {
     if (searchQuery) {
-      history(`/results/${encodeURIComponent(searchQuery)}`); // Update history
+      history(`/results/${encodeURIComponent(searchQuery)}`);
     }
   };
 
   const handleSearchChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
-    if (query) {
-      setShowSuggestions(true);
-    } else {
-      setShowSuggestions(false);
-    }
+    setShowSuggestions(!!query);
   };
 
   const handleSuggestionClick = (suggestion) => {
     setSearchQuery(suggestion);
-    history(`/results/${suggestion}`); // Update history
+    history(`/results/${suggestion}`);
   };
 
   const handleOutsideClick = (e) => {
@@ -85,45 +82,45 @@ const Head = () => {
 
   return (
     <>
-      <div className="flex justify-between fixed w-full h-16 align-middle p-3 bg-white z-50">
-      <div className="flex">
+      <div className="flex justify-between items-center fixed w-full h-14 px-3 bg-white z-50 ">
+        <div className="flex items-center space-x-2 sm:space-x-4">
           <img
             onClick={handleClick}
-            className="h-8 mx-4 cursor-pointer"
+            className="h-4 sm:h-6 cursor-pointer"
             alt="menu"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/800px-Hamburger_icon.svg.png"
           />
           <img
-            className="h-8"
+            className="h-3 sm:h-6"
             alt="youtube-logo"
-            src="https://t3.ftcdn.net/jpg/05/07/46/84/240_F_507468479_HfrpT7CIoYTBZSGRQi7RcWgo98wo3vb7.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
           />
         </div>
-        <div className="relative w-[48%] border border-red-300">
-          <div className="mr-20 flex items-center w-full">
+        <div className="relative w-2/3 sm:w-1/2">
+          <div className="flex items-center">
             <input
               value={searchQuery}
               onChange={handleSearchChange}
-              className="border border-gray-300 p-2 rounded-l-full w-full"
+              className="border border-gray-300 p-1 sm:p-2 rounded-l-full w-full text-xs sm:text-sm focus:outline-none"
               type="text"
-              placeholder="search"
+              placeholder="Search"
             />
             <button
-              className="border border-gray-300 h-[42px] w-16 flex items-center justify-center rounded-r-full hover:bg-red-50"
+              className="border border-gray-300 h-[1.6rem] sm:h-[2.4rem] md:h-[2.4rem] w-8 sm:w-12 flex items-center justify-center rounded-r-full bg-gray-50 hover:bg-gray-100"
               onClick={searchButton}
             >
-              <BiSearch />
+              <BiSearch className="text-gray-600 text-sm sm:text-base" />
             </button>
           </div>
           {suggestions.length > 0 && showSuggestions && (
             <div
               ref={suggestionRef}
-              className="z-50 bg-white rounded-lg border p-3 w-[30rem] ml-2 border-grey-300"
+              className="absolute top-full mt-1 bg-white rounded-lg border p-2 w-full shadow-lg"
             >
               {suggestions.map((suggestion, index) => (
                 <Link to={`/results/${suggestion}`} key={index}>
                   <div
-                    className="py-2 shadow-sm hover:bg-gray-100 pl-3 cursor-pointer"
+                    className="py-1 sm:py-2 hover:bg-gray-100 px-2 sm:px-3 cursor-pointer text-xs sm:text-sm"
                     onClick={() => handleSuggestionClick(suggestion)}
                   >
                     {suggestion}
@@ -133,12 +130,12 @@ const Head = () => {
             </div>
           )}
         </div>
-        <div className="flex justify-center">
+        <div className="flex items-center">
           <img
-            className="h-8"
+            className="h-5 sm:h-6 lg:mr-5 cursor-pointer"
             onClick={() => console.log("hello")}
             alt="profile"
-            src="https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png"
+            src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
           />
         </div>
       </div>
