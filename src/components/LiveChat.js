@@ -15,10 +15,10 @@ const LiveChat = () => {
    }
 
    const handleChatToggle=()=>{
-      if(liveChatToggle == false){
+      if(liveChatToggle === false){
         setLiveChatToggle(true)
       }
-      else if(liveChatToggle == true){
+      else if(liveChatToggle === true){
         setLiveChatToggle(false)
       }
    }
@@ -52,6 +52,7 @@ const LiveChat = () => {
           <span className='ml-6 mt-3'>Chat</span>
           <button onClick={()=>handleChatToggle()}>
             <img 
+             alt='img'
              className='h-10 w-10 m-2'
              src='https://static.thenounproject.com/png/3015892-200.png'
              >

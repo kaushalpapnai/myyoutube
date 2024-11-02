@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { toggleMenu } from "../Utils/appSlice";
-import { SEARCH_SUGGESION_API } from "../Utils/config";
 import { useDispatch, useSelector } from "react-redux";
 import { cacheResults } from "../Utils/searchSlice";
 import { Link, useNavigate } from "react-router-dom";
