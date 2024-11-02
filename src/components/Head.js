@@ -71,7 +71,6 @@ const Head = () => {
     try {
       const response = await fetch(`https://myyoutube-o2t2.onrender.com/api/suggestions?q=${searchQuery}`);
       const json = await response.json();
-      console.log(json);
       setSuggestions(json[1]); // Assuming the format remains the same
       dispatch(
         cacheResults({
@@ -138,7 +137,6 @@ const Head = () => {
         <div className="flex items-center">
           <img
             className="h-5 sm:h-6 lg:mr-5 cursor-pointer"
-            onClick={() => console.log("hello")}
             alt="profile"
             src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
           />
