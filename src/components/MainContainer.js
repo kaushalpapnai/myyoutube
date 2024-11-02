@@ -13,7 +13,7 @@ const MainContainer = () => {
 
   return (
     <div
-      className={`mt-[3rem] w-screen 
+      className={`mt-[3rem] w-screen
       ${isMenuOpen ? 'ml-[3.7rem] md:ml-44' : ''}`}
     >
       {/* <ButtonCarousel /> */}

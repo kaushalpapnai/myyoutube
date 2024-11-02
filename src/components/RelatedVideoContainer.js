@@ -1,32 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { YOUTUBE_API } from "../Utils/config";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const RelatedVideo = ({videoId}) => {
+const RelatedVideo = ({ videoId }) => {
   const [relatedVideo, setRelatedVideo] = useState([]);
 
   useEffect(() => {
-    Video();
+    fetchRelatedVideos();
   }, [videoId]);
 
-  const Video = async () => {
+  const fetchRelatedVideos = async () => {
     const data = await fetch(YOUTUBE_API);
     const json = await data.json();
-    //  console.log(json)
     setRelatedVideo(json?.items);
   };
 
   const views = (views) => {
     if (views >= 1000000) {
-      return (views / 1000000).toFixed(1) + "m";
+      return (views / 1000000).toFixed(1) + "M";
     } else if (views >= 1000) {
-      return (views / 1000).toFixed(0) + "k";
+      return (views / 1000).toFixed(0) + "K";
     } else {
       return views;
     }
   };
 
-  function formatRelativeTime(timeString) {
+  const formatRelativeTime = (timeString) => {
     const currentTime = new Date();
     const givenTime = new Date(timeString);
     const timeDifference = currentTime - givenTime;
@@ -59,49 +58,44 @@ const RelatedVideo = ({videoId}) => {
       const years = Math.floor(timeDifference / year);
       return years + (years === 1 ? " year ago" : " years ago");
     }
-  }
+  };
 
-  const sliceCharTitle = (char) => {
-    let slicedChar;
-    if (char.length > 60) {
-      slicedChar = char.slice(0, 60);
-      return slicedChar + "...";
-    } else {
-      return char;
-    }
+  const sliceCharTitle = (title) => {
+    return title.length > 60 ? title.slice(0, 60) + "..." : title;
   };
 
   return (
     <>
-      {relatedVideo
-        ? relatedVideo?.map((items) => (
-            <Link to={`/watch?v=${items.id}`}>
-              <div className="flex m-5 box-border" key={items.id}>
-                <img
-                  className="mr-3 rounded-lg w-48 h-[7rem]"
-                  src={items?.snippet?.thumbnails?.medium?.url}
-                ></img>
-                <div className="box-border w-2/3">
-                  <h1>{sliceCharTitle(items?.snippet?.title)}</h1>
-                  <p className="mt-1 mb-1 text-sm text-gray-600">
-                    {items?.snippet?.channelTitle}
-                  </p>
-                  <div className="flex">
-                    <p className="text-sm text-gray-600 mr-3">
-                      {formatRelativeTime(items?.statistics?.viewCount)}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {new Date(items?.snippet?.publishedAt).toLocaleString()}
-                    </p>
-                  </div>
+      {relatedVideo?.map((item) => (
+        <Link to={`/watch?v=${item.id}`} key={item.id}>
+          <div className="grid grid-cols-1 md:grid-cols-3  box-border md:rounded-lg overflow-hidden mt-4 md:mt-4">
+            {/* Thumbnail Image */}
+            <div className="col-span-1  w-full md:h-full aspect-video overflow-hidden">
+              <img
+                className="w-full h-full object-cover"
+                src={item?.snippet?.thumbnails?.medium?.url}
+                alt="Thumbnail"
+              />
+            </div>
+            {/* Video Details */}
+            <div className="col-span-2 p-4 md:ml-3 md:p-0 flex flex-col justify-center">
+              <h1 className="text-sm md:text-base lg:text-lg font-semibold text-gray-800">
+                {sliceCharTitle(item?.snippet?.title)}
+              </h1>
+              <div className="mt-2 md:mt-0 text-xs md:text-sm text-gray-600">
+                <p className="font-normal">{item?.snippet?.channelTitle}</p>
+                <div className="flex space-x-1 text-xs md:text-sm text-gray-600">
+                  <p>{views(item?.statistics?.viewCount)} Views</p>
+                  <span>·</span>
+                  <p>{formatRelativeTime(item?.snippet?.publishedAt)}</p>
                 </div>
               </div>
-            </Link>
-          ))
-        : null}
+            </div>
+          </div>
+        </Link>
+      ))}
     </>
   );
 };
 
 export default RelatedVideo;
-// {views(items?.statistics?.viewCount) + " Views"}

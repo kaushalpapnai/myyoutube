@@ -25,7 +25,7 @@ const Results = () => {
 
     return (
         <>
-        <div className={`mt-20 ${appSlice ? 'ml-44' : 'ml-24'} `}>
+        <div className={`mt-16 ${appSlice ? 'ml-16 md:ml-44' : 'ml-0 md:ml-16'}`}>
          {searchData && searchData?.map((item)=>
            (
             <Link to={"/watch?v="+item.id.videoId} key={item.id.videoId}>

@@ -84,7 +84,7 @@ const LiveChat = () => {
         </button>
       </div> 
 
-    </div> : <button className='w-[26rem] border border-gray-300   h-9 hover:bg-red-50 rounded-2xl rounded-tr-2xl shadow-sm  ml-3'
+    </div> : <button className='w-[26rem] hidden md:block border border-gray-300   h-9 hover:bg-red-50 rounded-2xl rounded-tr-2xl shadow-sm  ml-3'
       onClick={()=>handleChatToggle()}
       >show chat
     </button>
