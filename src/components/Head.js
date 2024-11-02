@@ -69,7 +69,7 @@ const Head = () => {
 
   const searchSuggestion = async () => {
     try {
-      const response = await fetch(`https://https://myyoutube-o2t2.onrender.com/api/suggestions?q=${searchQuery}`);
+      const response = await fetch(`https://myyoutube-o2t2.onrender.com/api/suggestions?q=${searchQuery}`);
       const json = await response.json();
       console.log(json);
       setSuggestions(json[1]); // Assuming the format remains the same
